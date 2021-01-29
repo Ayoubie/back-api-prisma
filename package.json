@@ -1,23 +1,27 @@
 {
-    "name": "back-api-prisma",
-    "version": "1.0.0",
-    "description": "",
-    "main": "index.js",
-    "scripts": {
-        "start": "nodemon -e js,graphql src/index.js",
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "keywords": [],
-    "author": "Ayoub",
-    "license": "ISC",
-    "dependencies": {
-      "bcryptjs": "^2.4.3",
-      "dotenv": "^8.2.0",
-      "env-cmd": "^10.1.0",
-      "graphql-yoga": "^1.18.3",
-      "jsonwebtoken": "^8.5.1",
-      "nodemon": "^2.0.7",
-      "prisma-binding": "^2.3.16"
-    }
+  "name": "back-api-prisma",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "env-cmd ./prod.env node dist/index.js",
+    "heroku-postbuild": "babel src --out-dir dist --copy-files",
+    "dev": "env-cmd ./dev.env nodemon -e js,graphql src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Ayoub",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/polyfill": "^7.0.0",
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^8.2.0",
+    "env-cmd": "^8.0.2",
+    "graphql-yoga": "^1.18.3",
+    "jsonwebtoken": "^8.5.1",
+    "nodemon": "^2.0.7",
+    "prisma-binding": "^2.3.16"
   }
-  
+}

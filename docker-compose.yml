@@ -13,23 +13,24 @@ services:
         databases:
           default:
             connector: postgres
-            host: ec2-54-246-115-40.eu-west-1.compute.amazonaws.com
-            database: dailtgptkl9sq6
-            user: lvrddgijhbsqob
-            password: 1d8799a66d84cfd424e190615e20215d9f9f6baecefa247763647113d5307496
+            host: ec2-54-216-155-253.eu-west-1.compute.amazonaws.com
+            database: dbfp42lf3fgurv
+            user: zcesmeoprdwwtt
+            password: d533e1af025503a0883bb7c419068e93b85b81d2fdd80e7789a58bf26ccf4cf9
+            ssl: true
             rawAccess: true
-            port: 5432
+            port: '5432'
             migrations: true
-  postgres:
-    image: postgres
-    restart: always
-    # Uncomment the next two lines to connect to your your database from outside the Docker environment, e.g. using a database GUI like Postico
-    # ports:
-    # - "5432:5432"
-    environment:
-      POSTGRES_USER: prisma
-      POSTGRES_PASSWORD: prisma
-    volumes:
-      - postgres:/var/lib/postgresql/data
-volumes:
-  postgres:
+#   postgres:
+#     image: postgres
+#     restart: always
+#     # Uncomment the next two lines to connect to your your database from outside the Docker environment, e.g. using a database GUI like Postico
+#     # ports:
+#     # - "5432:5432"
+#     environment:
+#       POSTGRES_USER: prisma
+#       POSTGRES_PASSWORD: prisma
+#     volumes:
+#       - postgres:/var/lib/postgresql/data
+# volumes:
+#   postgres:

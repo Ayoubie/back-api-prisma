@@ -1,5 +1,4 @@
-#endpoint: ${env:ENDPOINT}endpoint: https://back-api-prisma-91da3a6f92.herokuapp.com/back-api-prisma/prod
-
+endpoint: ${env:ENDPOINT}
 datamodel: datamodel.prisma
 
 generate:

@@ -1,3 +1,4 @@
+import '@babel/polyfill'
 const {GraphQLServer} = require('graphql-yoga');
 const {Prisma} = require('prisma-binding');
 const resolvers = require('./resolvers');
@@ -17,25 +18,7 @@ const server = new GraphQLServer({
   }),
 })
 
-server.start(
-    () => console.log(`GraphQL server is running on http://localhost:4000`)
-)
 
-// const { GraphQLServer } = require('graphql-yoga')
- 
-// const typeDefs = `
-//  type Query {
-//  hello: String!
-//  }
-// `
- 
-// const resolvers = {
-//  Query: {
-//  hello: (_, args, context, info) => {
-//     return "Hello World";
-//  },
-//  }
-// }
- 
-// const server = new GraphQLServer({ typeDefs, resolvers })
-// server.start(() => console.log('Server is running on localhost:4000'))
+server.start({ port: process.env.PORT || 4000 }, () => {
+  console.log('The server is up!')
+})
