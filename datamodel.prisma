@@ -1,0 +1,76 @@
+enum Role {
+  ADMIN
+  CUSTOMER
+  RESTORER
+}
+
+enum ApprovalProcess {
+  APPROVED
+  PENDING
+  REJECTED
+}
+
+type Customer {
+  id: ID! @id
+  first_name: String!
+  last_name: String!
+  birthday: DateTime!
+  telephone: String! @unique
+  email: String! @unique
+  password: String!
+  role: Role @default(value: CUSTOMER)
+  created: Boolean! @default(value: false)
+  orders: [Order]
+}
+
+type Item {
+  id: ID! @id
+  title: String!
+  price: Int
+  restaurants: [Restaurant!]
+  filters: [Filter!]
+}
+
+type Menu {
+  id: ID! @id
+  title: String!
+  price: Int
+  restaurants: [Restaurant!]!
+  filters: [Filter!]
+}
+
+type Order {
+  id: ID! @id
+  status: Boolean!
+  menus: [Menu!]!
+  items: [Item!]!
+  customer: Customer!
+  payment: Payment! @relation(link: INLINE)
+}
+
+type Payment {
+  id: ID! @id
+  amount: Float!
+  status: Boolean!
+  type: String!
+  codePayment: String! @unique
+  order: Order!
+}
+
+type Restaurant {
+  id: ID! @id
+  name: String! @unique
+  description: String!
+  created: Boolean! @default(value: false)
+  menus: [Menu!]!
+  items: [Item!]
+  filters: [Filter!]
+}
+
+type Filter {
+  id: ID! @id
+  name: String! @unique
+  items: [Item!]
+  menus: [Menu!]
+  restaurants: [Restaurant!]
+}
